@@ -3,6 +3,7 @@ package br.com.fstmkt.dto.shallow;
 import br.com.fstmkt.dto.BaseDTO;
 import br.com.fstmkt.entity.enums.Role;
 
+import java.time.LocalDate;
 import java.util.Set;
 import java.util.TreeSet;
 
@@ -11,17 +12,28 @@ public class UsuarioShallowDTO extends BaseDTO<Long> {
     private String cpf;
     private String nome;
     private String email;
+    private LocalDate dataNascimento;
 
     private Set<Role> roles = new TreeSet<>();
 
     public UsuarioShallowDTO() {
     }
 
-    public UsuarioShallowDTO(Long id, String cpf, String nome, String email, Set<Role> roles) {
+//    public UsuarioShallowDTO(Long id, String cpf, String nome, String email, Set<Role> roles) {
+//        this.id = id;
+//        this.cpf = cpf;
+//        this.nome = nome;
+//        this.email = email;
+//        this.roles = roles;
+//    }
+
+
+    public UsuarioShallowDTO(Long id, String cpf, String nome, String email, LocalDate dataNascimento, Set<Role> roles) {
         this.id = id;
         this.cpf = cpf;
         this.nome = nome;
         this.email = email;
+        this.dataNascimento = dataNascimento;
         this.roles = roles;
     }
 
