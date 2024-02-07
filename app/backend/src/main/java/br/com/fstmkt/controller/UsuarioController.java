@@ -5,6 +5,7 @@ import br.com.fstmkt.dto.shallow.UsuarioShallowDTO;
 import br.com.fstmkt.entity.Usuario;
 import br.com.fstmkt.service.BaseService;
 import br.com.fstmkt.service.UsuarioService;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -16,6 +17,26 @@ public class UsuarioController extends BaseController<Long, Usuario, UsuarioDTO,
 
     public UsuarioController(UsuarioService usuarioService) {
         this.usuarioService = usuarioService;
+    }
+
+    @GetMapping("/all")
+    public String allAccess() {
+        return "Public Content.";
+    }
+
+    @GetMapping("/cliente")
+    public String userAccess() {
+        return "Cliente ok.";
+    }
+
+    @GetMapping("/vendedor")
+    public String moderatorAccess() {
+        return "Vendedor ok";
+    }
+
+    @GetMapping("/admin")
+    public String adminAccess() {
+        return "Admin ok.";
     }
 
 

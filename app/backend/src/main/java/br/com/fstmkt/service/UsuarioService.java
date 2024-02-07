@@ -63,7 +63,7 @@ public class UsuarioService extends BaseService<Long, Usuario, UsuarioDTO, Usuar
         return usuario;
     }
 
-    public Usuario buscarUsuarioPorTokenLogin(String token) {
+    public Usuario buscarUsuarioPorToken(String token) {
         Usuario usuario = usuarioRepository.findUsuarioByTokenLogin(token)
                 .orElseThrow(() -> new UsernameNotFoundException(String.format("Token: %s, não foi encontrado", token)));
         return usuario;
