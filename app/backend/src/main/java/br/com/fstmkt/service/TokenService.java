@@ -32,7 +32,13 @@ public class TokenService {
                 .withClaim("roles", roles)
                 .sign(algoritmo);
 
-        return new TokenResponse(token, EXPIRES_IN);
+        return new TokenResponse(
+                token,
+                usuario.getId(),
+                usuario.getUsername(),
+                usuario.getCpf(),
+                usuario.getEmail(),
+                roles);
     }
 
     public String buscarSubject(String tokenJwt) {

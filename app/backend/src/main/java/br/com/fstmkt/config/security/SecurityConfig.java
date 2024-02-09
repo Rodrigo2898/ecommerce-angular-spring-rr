@@ -43,8 +43,9 @@ public class SecurityConfig {
                 .authorizeHttpRequests(authorize -> authorize
                         .requestMatchers(antMatcher(HttpMethod.POST, "/api/v1/auth/**")).permitAll()
                         .requestMatchers(antMatcher(HttpMethod.PUT, "api/v1/usuario/senha")).permitAll()
-                        .requestMatchers("/api/v1/usuario/listar").hasAnyAuthority("ADMIN", "CLIENTE", "VENDEDOR")
-                        .requestMatchers("/api/v1/usuario/perfil").hasAnyAuthority("ADMIN", "CLIENTE", "VENDEDOR")
+                        .requestMatchers("/api/v1/usuario/all").hasAnyAuthority("ADMIN", "CLIENTE", "VENDEDOR", "USUARIO")
+                        .requestMatchers("/api/v1/usuario/listar").hasAnyAuthority("ADMIN", "CLIENTE", "VENDEDOR", "USUARIO")
+                        .requestMatchers("/api/v1/usuario/perfil").hasAnyAuthority("ADMIN", "CLIENTE", "VENDEDOR", "USUARIO")
                         .requestMatchers("api/v1/usuario/admin/**").hasRole("ADMIN")
                         .requestMatchers("api/v1/usuario/cliente/**").hasRole("CLIENTE")
                         .requestMatchers("api/v1/usuario/vendedor/**").hasRole("VENDEDOR")

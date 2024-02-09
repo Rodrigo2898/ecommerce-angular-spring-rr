@@ -1,15 +1,12 @@
 package br.com.fstmkt.dto.request;
 
-import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.NotBlank;
 
-public class TokenRequest {
-
-    @NotNull
+public class LoginRequest {
+    @NotBlank
     private String username;
-
-    @NotNull
+    @NotBlank
     private String password;
-
 
     public String getUsername() {
         return username;
@@ -26,5 +23,4 @@ public class TokenRequest {
     public void setPassword(String password) {
         this.password = password;
     }
-
 }

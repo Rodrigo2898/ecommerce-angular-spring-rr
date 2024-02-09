@@ -39,13 +39,13 @@ public class UsuarioDTO extends BaseDTO<Long> {
     private String confirmPassword;
     @NotNull(message = "Tipo de usuário é obrigatório.")
     private Set<Role> roles = new TreeSet<>();
-    private String tokenLogin;
+
 
     public UsuarioDTO() {
     }
 
     public UsuarioDTO(Long id, String cpf, String nome, String email, LocalDate dataNascimento, String password,
-                      String confirmPassword, Set<Role> roles, String tokenLogin) {
+                      String confirmPassword, Set<Role> roles) {
         this.id = id;
         this.cpf = cpf;
         this.nome = nome;
@@ -54,11 +54,10 @@ public class UsuarioDTO extends BaseDTO<Long> {
         this.password = password;
         this.confirmPassword = confirmPassword;
         this.roles = roles;
-        this.tokenLogin = tokenLogin;
     }
 
     public UsuarioDTO(String cpf, String nome, String email, LocalDate dataNascimento, String password,
-                      String confirmPassword, Set<Role> roles, String tokenLogin) {
+                      String confirmPassword, Set<Role> roles) {
         this.cpf = cpf;
         this.nome = nome;
         this.email = email;
@@ -66,7 +65,6 @@ public class UsuarioDTO extends BaseDTO<Long> {
         this.password = password;
         this.confirmPassword = confirmPassword;
         this.roles = roles;
-        this.tokenLogin = tokenLogin;
     }
 
     @Override
@@ -133,13 +131,5 @@ public class UsuarioDTO extends BaseDTO<Long> {
 
     public void setRoles(Set<Role> roles) {
         this.roles = roles;
-    }
-
-    public String getTokenLogin() {
-        return tokenLogin;
-    }
-
-    public void setTokenLogin(String tokenLogin) {
-        this.tokenLogin = tokenLogin;
     }
 }

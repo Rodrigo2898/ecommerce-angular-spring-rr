@@ -25,9 +25,7 @@ public class Usuario extends BaseEntity<Long> implements UserDetails {
     private String password;
     @Transient
     private String confirmPassword;
-    private Boolean isAtivo = true;
-    private Boolean isBloqueado = false;
-    private String tokenLogin;
+
 
     @Enumerated(EnumType.STRING)
     @ElementCollection(targetClass = Role.class, fetch = FetchType.EAGER)
@@ -37,9 +35,14 @@ public class Usuario extends BaseEntity<Long> implements UserDetails {
     public Usuario() {
     }
 
+    public Usuario(String cpf, String email, String password) {
+        this.cpf = cpf;
+        this.email = email;
+        this.password = password;
+    }
 
     public Usuario(Long id, String cpf, String nome, String email, LocalDate dataNascimento, String password,
-                   String confirmPassword, Boolean isAtivo, Boolean isBloqueado, String tokenLogin, Set<Role> roles) {
+                   String confirmPassword, Set<Role> roles) {
         this.id = id;
         this.cpf = cpf;
         this.nome = nome;
@@ -47,9 +50,6 @@ public class Usuario extends BaseEntity<Long> implements UserDetails {
         this.dataNascimento = dataNascimento;
         this.password = password;
         this.confirmPassword = confirmPassword;
-        this.isAtivo = isAtivo;
-        this.isBloqueado = isBloqueado;
-        this.tokenLogin = tokenLogin;
         this.roles = roles;
     }
 
@@ -75,7 +75,7 @@ public class Usuario extends BaseEntity<Long> implements UserDetails {
 
     @Override
     public boolean isAccountNonLocked() {
-        return !isBloqueado;
+        return true;
     }
 
     @Override
@@ -85,7 +85,7 @@ public class Usuario extends BaseEntity<Long> implements UserDetails {
 
     @Override
     public boolean isEnabled() {
-        return isAtivo;
+        return true;
     }
 
 
@@ -141,30 +141,6 @@ public class Usuario extends BaseEntity<Long> implements UserDetails {
 
     public void setConfirmPassword(String confirmPassword) {
         this.confirmPassword = confirmPassword;
-    }
-
-    public Boolean getAtivo() {
-        return isAtivo;
-    }
-
-    public void setAtivo(Boolean ativo) {
-        isAtivo = ativo;
-    }
-
-    public Boolean getBloqueado() {
-        return isBloqueado;
-    }
-
-    public void setBloqueado(Boolean bloqueado) {
-        isBloqueado = bloqueado;
-    }
-
-    public String getTokenLogin() {
-        return tokenLogin;
-    }
-
-    public void setTokenLogin(String tokenLogin) {
-        this.tokenLogin = tokenLogin;
     }
 
     public Set<Role> getRoles() {

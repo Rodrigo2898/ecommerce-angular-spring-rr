@@ -63,11 +63,11 @@ public class UsuarioService extends BaseService<Long, Usuario, UsuarioDTO, Usuar
         return usuario;
     }
 
-    public Usuario buscarUsuarioPorToken(String token) {
-        Usuario usuario = usuarioRepository.findUsuarioByTokenLogin(token)
-                .orElseThrow(() -> new UsernameNotFoundException(String.format("Token: %s, não foi encontrado", token)));
-        return usuario;
-    }
+//    public Usuario buscarUsuarioPorToken(String token) {
+//        Usuario usuario = usuarioRepository.findUsuarioByTokenLogin(token)
+//                .orElseThrow(() -> new UsernameNotFoundException(String.format("Token: %s, não foi encontrado", token)));
+//        return usuario;
+//    }
 
     public String criptografarSenha(String senha) {
         return bCryptPasswordEncoder.encode(senha);
